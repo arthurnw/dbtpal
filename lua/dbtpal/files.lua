@@ -28,7 +28,7 @@ end
 if config.options.extended_path_search then
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         group = "dbtPal",
-        pattern = { "*.sql" },
+        pattern = { "*.sql", "*.csv" },
         command = "set suffixesadd+=.sql",
         desc = "Enable gf (go to file) under cursor)",
     })
@@ -52,6 +52,7 @@ if config.options.extended_path_search then
             if projPath then
                 vim.opt.path:append(config.options.path_to_dbt_project .. "/macros/**")
                 vim.opt.path:append(config.options.path_to_dbt_project .. "/models/**")
+                vim.opt.path:append(config.options.path_to_dbt_project .. "/data/**")
             end
         end,
         desc = "Look for files within dbt project folders",
