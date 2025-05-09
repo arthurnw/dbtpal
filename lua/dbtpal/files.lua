@@ -46,7 +46,7 @@ end
 if config.options.extended_path_search then
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         group = "dbtPal",
-        pattern = { "*.sql", "*.yml", "*.md" },
+        pattern = { "*.sql", "*.yml", "*.md", "*.csv" },
         callback = function(ev)
             local projPath = projects.detect_dbt_project_dir(ev.file)
             if projPath then
