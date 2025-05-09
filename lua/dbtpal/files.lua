@@ -29,7 +29,11 @@ if config.options.extended_path_search then
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         group = "dbtPal",
         pattern = { "*.sql", "*.csv" },
-        command = "set suffixesadd+=.sql",
+        -- command = "set suffixesadd+=.sql",
+        callback = function()
+            vim.opt.suffixesadd:append ".sql"
+            vim.opt.suffixesadd:append ".csv"
+        end,
         desc = "Enable gf (go to file) under cursor)",
     })
 end
@@ -38,7 +42,11 @@ if config.options.extended_path_search then
     vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
         group = "dbtPal",
         pattern = { "*.md", "*.yml" },
-        command = "set suffixesadd+=.sql",
+        -- command = "set suffixesadd+=.sql",
+        callback = function()
+            vim.opt.suffixesadd:append ".sql"
+            vim.opt.suffixesadd:append ".csv"
+        end,
         desc = "Enable gf (go to file) under cursor)",
     })
 end
